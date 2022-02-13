@@ -8,9 +8,7 @@ const catchAsyncError = require("@app/middleware/catchAsyncErrors");
  * create Portfolio
  */
 const createPortfolio = catchAsyncError(async (req: Request, res: Response, next: NextFunction) => {
-    // const portfolio = await Portfolio.create(req.body);
-    const portfolio = await Portfolio.create(req.body)
-
+    const portfolio = await Portfolio.create(req.body);
     res.status(200).json({
         sucess: true,
         portfolio,
