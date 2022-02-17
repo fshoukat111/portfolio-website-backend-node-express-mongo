@@ -5,27 +5,27 @@ const portfolioSchema = new mongoose.Schema({
     type: String,
     required: [true, "Please Enter Portfolio Title"],
   },
-  categories:[{
-    type:mongoose.Schema.ObjectId,
+  categories: [{
+    type: mongoose.Schema.ObjectId,
     ref: 'Category',
-    required:true
+    required: true
   }],
   portfolioDescription: {
     type: String,
     required: [true, "Please Enter Portfolio Description"],
   },
-  // portfolioImages: [
-  //   {
-  //     publicId: {
-  //       type: String,
-  //       required: true,
-  //     },
-  //     imageUrl: {
-  //       type: String,
-  //       required: true,
-  //     },
-  //   },
-  // ],
+  portfolioImages: [
+    {
+      publicId: {
+        type: String,
+        required: true,
+      },
+      imageUrl: {
+        type: String,
+        required: true,
+      },
+    },
+  ],
   portfolioUrl: {
     type: String,
     required: [true, 'Please Enter Portfolio Url'],
