@@ -1,5 +1,4 @@
-import { ApiFeatures } from "@app/utils/apifeatures";
-import e, { NextFunction, Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 
 const Portfolio = require("@app/models/PortfolioModel/portfolio.model");
 const Category = require("@app/models/CategoryModel/category.model");

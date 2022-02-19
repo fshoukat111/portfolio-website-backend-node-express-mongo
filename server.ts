@@ -1,11 +1,7 @@
-import express from 'express';
 import 'module-alias/register';
 import { connectDataBase } from '@app/config/database';
-const app = require("./app")
-// app.get('/', (req, res) => {
-//     res.send('Well done!');
-// })
-
+// const app = require("./app");
+import {app} from './app'
 
 // Connecting to database
 connectDataBase();
