@@ -7,10 +7,11 @@ const user = require("@app/routes/UserRoutes/user.routes");
 app.use(express.json());
 
 // Config
-if (process.env.NODE_ENV == "PRODUCTION") {
-    console.log("process.env.NODE_ENV ",process.env.NODE_ENV )
-    require("dotenv").config({ path: "app/.env" });
-}
+// if (process.env.NODE_ENV == "PRODUCTION") {
+//     console.log("process.env.NODE_ENV ",process.env.NODE_ENV )
+//     require("dotenv").config({ path: "app/.env" });
+// }
+require('dotenv').config();
 
 app.use("/api", category);
 app.use("/api", portfolio);
