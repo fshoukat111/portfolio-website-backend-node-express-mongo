@@ -6,10 +6,6 @@ import {app} from './app'
 // Connecting to database
 connectDataBase();
 
-// app.listen(process.env.PORT || 3000, () => {
-//     console.log('The application is listening on port 3000!');
-// })
-
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
     console.log('The application is listening on port 3000!');
 })
