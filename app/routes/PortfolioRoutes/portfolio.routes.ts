@@ -9,9 +9,9 @@ import {
 //get all Portfolio
 router.route("/portfolio").get(getAllPortfolio);
 //post single Portfolio
-router.route("/portfolio/new").post(createPortfolio);
+router.route("/admin/portfolio/create").post(createPortfolio);
 //delete and update single Portfolio
-router.route("/portfolio/:id").put(updatePortfolio).delete(deletePortfolio);
+router.route("/admin/portfolio/:id").put(updatePortfolio).delete(deletePortfolio);
 
 
 

@@ -1,5 +1,4 @@
 import { NextFunction, Request, Response } from "express";
-
 const Portfolio = require("@app/models/PortfolioModel/portfolio.model");
 const catchAsyncError = require("@app/middleware/catchAsyncErrors");
 

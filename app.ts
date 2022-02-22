@@ -12,9 +12,9 @@ if (process.env.NODE_ENV == "PRODUCTION") {
     require("dotenv").config({ path: "app/.env" });
 }
 
-app.use("/api", category);
-app.use("/api", portfolio);
-app.use("/api", user);
+app.use("/api/v1", category);
+app.use("/api/v1", portfolio);
+app.use("/api/v1", user);
 
 export {
     app,
