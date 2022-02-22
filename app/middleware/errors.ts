@@ -1,6 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-
-const errorHandler = require("../utils/errorHandler");
+import {ErrorHandler} from '@app/utils/errorhandler'
 
 module.exports = (
   error: any,
@@ -14,13 +13,13 @@ module.exports = (
   //Wrong Mongodb Id error
   if (error.name === "CastError") {
     const message = `Resources Not Found. Invalid:${error.path}`;
-    error = new errorHandler(message, 400);
+    error = new ErrorHandler(message, 400);
   }
 
   //Mongoose Duplicate key error
   if (error.code == 1100) {
     const message = `Duplicate ${Object.keys(error.keyValue)} Entered`;
-    error = new errorHandler(message, 400);
+    error = new ErrorHandler(message, 400);
   }
 
   // Wrong JWT error

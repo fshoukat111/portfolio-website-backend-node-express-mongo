@@ -1,7 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-
 const Portfolio = require("@app/models/PortfolioModel/portfolio.model");
-const Category = require("@app/models/CategoryModel/category.model");
 const catchAsyncError = require("@app/middleware/catchAsyncErrors");
 
 /**
@@ -9,8 +7,6 @@ const catchAsyncError = require("@app/middleware/catchAsyncErrors");
  */
 export const createPortfolio = catchAsyncError(async (req: Request, res: Response, next: NextFunction) => {
     const portfolio = await Portfolio.create(req.body);
-    // const portfolio = await Portfolio.create(req.body).populate("categories");
-
     res.status(200).json({
         sucess: true,
         portfolio,
