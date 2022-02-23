@@ -1,8 +1,8 @@
 import { NextFunction, Request, Response } from "express";
 import { sendToken } from "@app/utils/jwtToken";
 import { ErrorHandler } from "@app/utils/errorhandler";
-const User = require("@app/models/UserModel/user.model");
-const catchAsyncError = require("@app/middleware/catchAsyncErrors");
+import { User } from "@app/controllers";
+import { catchAsyncError } from "@app/middleware/catchAsyncErrors";
 
 /**
  * register user
