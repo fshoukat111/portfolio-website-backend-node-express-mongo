@@ -14,7 +14,9 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors());
+app.use(cors({
+    origin: "http://localhost:4200"
+}));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/api/v1", category);
 app.use("/api/v1", portfolio);
