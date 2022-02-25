@@ -29,7 +29,7 @@ const userSchema = new mongoose.Schema({
     },
     createdAt: {
         type: Date,
-        default: Date.now,
+        default: new Date(Date.now()),
     },
 });
 
@@ -54,7 +54,6 @@ userSchema.methods.getJwtToken = function () {
  * @param password 
  */
 userSchema.methods.comparePassword = async function (this: any, password: string) {
-    console.log("password",password)
     return await bcrypt.compare(password, this.password);
 };
 module.exports = mongoose.model("User", userSchema);

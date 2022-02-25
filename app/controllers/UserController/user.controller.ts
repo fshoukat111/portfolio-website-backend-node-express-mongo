@@ -38,6 +38,15 @@ export const loginUser = catchAsyncError(async (req: Request, res: Response, nex
     sendToken(user, 200, res);
 });
 
+export const getAllUsers = catchAsyncError(async (req: Request, res: Response, next: NextFunction) => {
+    const users = await User.find();
+    res.status(200).json({
+        success: true,
+        users,
+    });
+});
+
+
 /**
  * logout
  */
