@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const db = process.env.MONGO_URI || 'mongodb://localhost:27017/portfolio';
-const connectDataBase = () => {
+export const connectDataBase = () => {
     mongoose.connect(db , {
         useNewUrlParser: true,
         useUnifiedTopology: true,
@@ -10,5 +10,4 @@ const connectDataBase = () => {
 }
 export {
     mongoose,
-    connectDataBase
 }
