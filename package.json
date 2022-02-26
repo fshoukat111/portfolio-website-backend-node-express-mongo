@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.ts",
+  "type": "module",
   "engines": {
     "node": "14.17.0"
   },
@@ -10,8 +11,7 @@
     "start": "nodemon server.ts",
     "build": "tsc --project ./",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "heroku-postbuild": "npm run prod",
-    "type": "module"
+    "heroku-postbuild": "npm run prod"
   },
   "author": "",
   "license": "ISC",
