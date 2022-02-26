@@ -9,6 +9,7 @@
   "scripts": {
     "start": "nodemon server.ts",
     "build": "tsc --project ./",
+    "type":"module",
     "test": "echo \"Error: no test specified\" && exit 1",
     "heroku-postbuild": "npm run prod"
   },
