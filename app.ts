@@ -1,7 +1,7 @@
 import express from "express";
-import { category,portfolio,user } from "@app/routes";
 import cookieParser from "cookie-parser"
 import bodyParser from "body-parser";
+import { category, portfolio, user } from "@app/routes/index";
 // import cors from "cors";
 
 export  const app = express();

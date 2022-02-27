@@ -1,10 +1,21 @@
-import { mongoose } from "@app/config/database";
+import { Document, Schema, Types, model } from 'mongoose';
 import { NextFunction, Request, Response } from "express";
 
-const validator = require("validator");
-const jwt = require("jsonwebtoken");
-const bcrypt = require("bcrypt");
-const userSchema = new mongoose.Schema({
+export interface IUser  extends Document{
+    email?: string;
+    userName?: string;
+    password?: string;
+    role?: string;
+    createdAt?: Date;
+  }
+
+import validator from "validator";
+import jwt from "jsonwebtoken";
+import bcrypt from "bcrypt";
+
+
+
+const userSchema:Schema  = new Schema<IUser>({
     userName: {
         type: String,
         required: [true, "Please Enter User Name"],
@@ -34,16 +45,17 @@ const userSchema = new mongoose.Schema({
 });
 
 // bycrpt password
-userSchema.pre("save", async function (this: any, next: NextFunction) {
+userSchema.pre("save", function (next: NextFunction) {
     if (!this.isModified("password")) {
         next();
     }
-    this.password = await bcrypt.hash(this.password, 10);
+    this.password = bcrypt.hash(this.password, 10);
 });
 
 // JWT TOKEN
 userSchema.methods.getJwtToken = function () {
-    return jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
+    const secret = String(process.env.JWT_SECRET);
+    return jwt.sign({ id: this._id }, secret, {
         expiresIn: process.env.JWT_EXPIRE,
     });
 };
@@ -56,4 +68,4 @@ userSchema.methods.getJwtToken = function () {
 userSchema.methods.comparePassword = async function (this: any, password: string) {
     return await bcrypt.compare(password, this.password);
 };
-module.exports = mongoose.model("User", userSchema);
+export const User = model<IUser>("User", userSchema);
