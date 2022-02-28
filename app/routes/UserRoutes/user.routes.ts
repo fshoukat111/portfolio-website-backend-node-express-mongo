@@ -1,10 +1,14 @@
-import express from "express";
-const router = express.Router();
-import { registerUser,loginUser,logout, getAllUsers } from "@app/controllers/UserController/user.controller";
+import { Router } from "express";
+
+import { 
+    registerUser,loginUser,
+    logout, 
+    getAllUsers } from "@app/controllers/UserController/user.controller";
+export const UserRoutes = Router();
+
 
 //post single Portfolio
-router.route("/register").post(registerUser);
-router.route("/login").post(loginUser);
-router.route("/users").get(getAllUsers);
-router.route("/logout").post(logout);
-module.exports = router;
+UserRoutes.route("/register").post(registerUser);
+UserRoutes.route("/login").post(loginUser);
+UserRoutes.route("/users").get(getAllUsers);
+UserRoutes.route("/logout").post(logout);

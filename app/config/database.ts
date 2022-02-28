@@ -1,24 +1,10 @@
-// const mongoose = require('mongoose');
-// const db = process.env.MONGO_URI || 'mongodb://localhost:27017/portfolio';
-// export const connectDataBase = () => {
-//     mongoose.connect(db , {
-//         useNewUrlParser: true,
-//         useUnifiedTopology: true,
-//     }).then((data: any) => {
-//         console.log(`Mongodb connected with server: ${data.connection.host}`);
-//     })
-// }
-// export {
-//     mongoose,
-// }
-
-
-
 import mongoose from "mongoose";
+import { ConnectOptions } from "mongodb";
 
 export const connectDataBase = () => {
-    mongoose.connect(`${process.env.MONGO_URI}`|| 'mongodb://localhost:27017/portfolio')
-        .then((data: any) => {
-            console.log(`Mongodb connected with server: ${data.connection.host}`)
-    })
+    mongoose.connect(`${process.env.MONGO_URI}`|| 'mongodb://localhost:27017/portfolio', {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    } as ConnectOptions).then((data: any) => {
+        })
 }

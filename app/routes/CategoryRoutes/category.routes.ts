@@ -1,10 +1,10 @@
-import express from "express";
-const router = express.Router();
+import { Router } from "express";
 import { createCategory, getCategories } from "@app/controllers/CategoryController/category.controller";
 import { authorizeRoles, isAuthenticatedUser } from "@app/middleware/auth";
+export const CategoryRoutes = Router();
 
 
-router.route("/admin/category/create").post(isAuthenticatedUser,authorizeRoles("Admin"),createCategory);
-router.route("/categories").get(getCategories);
+CategoryRoutes.route("/admin/category/create")
+    .post(isAuthenticatedUser, authorizeRoles("Admin"), createCategory);
+CategoryRoutes.route("/categories").get(getCategories);
 
-module.exports = router;

@@ -1,6 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-
-const User = require("@app/models/UserModel/user.model");
+import  {User} from "@app/models/UserModel/user.model";
 
 //create token and saving cookies
 export const sendToken = (user: InstanceType<typeof User>, statusCode: any, res: Response) => {

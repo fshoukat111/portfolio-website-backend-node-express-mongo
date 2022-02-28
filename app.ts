@@ -1,11 +1,13 @@
 import express from "express";
 import cookieParser from "cookie-parser"
 import bodyParser from "body-parser";
-import { category, portfolio, user } from "@app/routes/index";
+import { CategoryRoutes, PortfolioRoutes, UserRoutes } from "@app/routes";
+import errorMiddleware from "@app/middleware/errors";
+
+
 // import cors from "cors";
 
-export  const app = express();
-const errorMiddleware = require("@app/middleware/errors");
+export const app = express();
 
 // Config
 if (process.env.NODE_ENV !== "PRODUCTION") {
@@ -18,8 +20,8 @@ app.use(cookieParser());
 //     origin: "http://localhost:4200"
 // }));
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use("/api/v1", category);
-app.use("/api/v1", portfolio);
-app.use("/api/v1", user);
+app.use("/api/v1", CategoryRoutes);
+app.use("/api/v1", PortfolioRoutes);
+app.use("/api/v1", UserRoutes);
 
 app.use(errorMiddleware);
