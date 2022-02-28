@@ -1,3 +1,3 @@
-export const category = require("@app/routes/CategoryRoutes/category.routes");
-export const portfolio = require("@app/routes/PortfolioRoutes/portfolio.routes");
-export const user = require("@app/routes/UserRoutes/user.routes");
+export { CategoryRoutes } from "@app/routes/CategoryRoutes/category.routes";
+export { UserRoutes } from "@app/routes/UserRoutes/user.routes";
+export { PortfolioRoutes } from "@app/routes/PortfolioRoutes/portfolio.routes";

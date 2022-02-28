@@ -1,13 +1,13 @@
 import { Document, Schema, Types, model } from 'mongoose';
 import { NextFunction, Request, Response } from "express";
 
-export interface IUser  extends Document{
+export interface IUser extends Document {
     email?: string;
     userName?: string;
     password?: string;
     role?: string;
     createdAt?: Date;
-  }
+}
 
 import validator from "validator";
 import jwt from "jsonwebtoken";
@@ -15,7 +15,7 @@ import bcrypt from "bcrypt";
 
 
 
-const userSchema:Schema  = new Schema<IUser>({
+const userSchema = new Schema({
     userName: {
         type: String,
         required: [true, "Please Enter User Name"],
@@ -45,12 +45,12 @@ const userSchema:Schema  = new Schema<IUser>({
 });
 
 // bycrpt password
-// userSchema.pre("save", function (next: NextFunction) {
-//     if (!this.isModified("password")) {
-//         next();
-//     }
-//     this.password = bcrypt.hash(this.password, 10);
-// });
+userSchema.pre("save", async function(next: NextFunction) {
+    if (!this.isModified("password")) {
+        next();
+    }
+    this.password = await bcrypt.hash(this.password,11);
+});
 
 // JWT TOKEN
 userSchema.methods.getJwtToken = function () {
@@ -65,7 +65,7 @@ userSchema.methods.getJwtToken = function () {
  * @param this 
  * @param password 
  */
-userSchema.methods.comparePassword = async function (this: any, password: string) {
-    return await bcrypt.compare(password, this.password);
+userSchema.methods.comparePassword = function (this: any, password: string) {
+    return bcrypt.compare(password, this.password);
 };
-export const User = model<IUser>("User", userSchema);
+export const User = model("User", userSchema);
