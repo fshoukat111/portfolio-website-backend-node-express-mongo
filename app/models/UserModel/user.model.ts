@@ -45,12 +45,12 @@ const userSchema:Schema  = new Schema<IUser>({
 });
 
 // bycrpt password
-userSchema.pre("save", function (next: NextFunction) {
-    if (!this.isModified("password")) {
-        next();
-    }
-    this.password = bcrypt.hash(this.password, 10);
-});
+// userSchema.pre("save", function (next: NextFunction) {
+//     if (!this.isModified("password")) {
+//         next();
+//     }
+//     this.password = bcrypt.hash(this.password, 10);
+// });
 
 // JWT TOKEN
 userSchema.methods.getJwtToken = function () {

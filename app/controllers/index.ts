@@ -1,3 +1,3 @@
-export const Category = require("@app/models/CategoryModel/category.model");
-export const Portfolio = require("@app/models/PortfolioModel/portfolio.model");
-export const User = require("@app/models/UserModel/user.model");
+export {Category} from "@app/models/CategoryModel/category.model";
+export {Portfolio} from "@app/models/PortfolioModel/portfolio.model";
+export {User} from "@app/models/UserModel/user.model";

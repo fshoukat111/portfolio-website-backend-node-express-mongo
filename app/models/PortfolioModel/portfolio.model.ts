@@ -1,6 +1,15 @@
 import { Document, Schema, Types, model } from 'mongoose';
 
-const portfolioSchema = new Schema({
+
+export interface IPortfolio  extends Document{
+  portfolioTitle?: string;
+  categories?:[];
+  portfolioDescription?: string;
+  portfolioImages?:[];
+  portfolioUrl?: string;
+}
+
+const portfolioSchema = new Schema<IPortfolio>({
   portfolioTitle: {
     type: String,
     required: [true, "Please Enter Portfolio Title"],
@@ -8,7 +17,7 @@ const portfolioSchema = new Schema({
   categories: [{
     type: Schema.Types.ObjectId,
     ref: 'Category',
-    required: true
+    // required: true
   }],
   portfolioDescription: {
     type: String,
@@ -31,4 +40,4 @@ const portfolioSchema = new Schema({
     required: [true, 'Please Enter Portfolio Url'],
   },
 });
-export const Portfolio = model("Portfolio", portfolioSchema);
+export const Portfolio = model<IPortfolio>("Portfolio", portfolioSchema);
