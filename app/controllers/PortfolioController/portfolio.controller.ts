@@ -22,13 +22,13 @@ export const getAllPortfolio = catchAsyncError(async (req: Request, res: Respons
     const startIndex = (page - 1) * limit;
     const endIndex = page * limit;
     const portfolios = await Portfolio.find().populate("categories").skip(startIndex).limit(limit);
-    endIndex <= portfolios.length ? portfolios.next = { page: page + 1, limit: limit } : null;
-    startIndex > 0 ? portfolios.previous = {page: page - 1,limit: limit}:null;
+    // endIndex <= portfolios.length ? portfolios.next = { page: page + 1, limit: limit } : null;
+    // startIndex > 0 ? portfolios.previous = {page: page - 1,limit: limit}:null;
     res.status(200).json({
         success: true,
         portfolios,
-        nextPages: portfolios.next,
-        previousPage: portfolios.previous,
+        // nextPages: portfolios.next,
+        // previousPage: portfolios.previous,
 
     });
 });

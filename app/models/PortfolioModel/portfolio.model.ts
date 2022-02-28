@@ -1,14 +1,23 @@
-import { mongoose } from "@app/config/database";
+import { Document, Schema, Types, model } from 'mongoose';
 
-const portfolioSchema = new mongoose.Schema({
+
+export interface IPortfolio  extends Document{
+  portfolioTitle?: string;
+  categories?:[];
+  portfolioDescription?: string;
+  portfolioImages?:[];
+  portfolioUrl?: string;
+}
+
+const portfolioSchema = new Schema<IPortfolio>({
   portfolioTitle: {
     type: String,
     required: [true, "Please Enter Portfolio Title"],
   },
   categories: [{
-    type: mongoose.Schema.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: 'Category',
-    required: true
+    // required: true
   }],
   portfolioDescription: {
     type: String,
@@ -31,4 +40,4 @@ const portfolioSchema = new mongoose.Schema({
     required: [true, 'Please Enter Portfolio Url'],
   },
 });
-module.exports = mongoose.model("Portfolio", portfolioSchema);
+export const Portfolio = model<IPortfolio>("Portfolio", portfolioSchema);
