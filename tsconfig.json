@@ -4,7 +4,7 @@
   },
   "compilerOptions": {
     "target": "es2018",
-    "module": "es2020",
+    "module": "commonjs",
     "outDir": "dist",
     "sourceMap": true,
     "allowJs": true,
@@ -22,5 +22,4 @@
   },
     
   },
-  "exclude": ["node_modules"],
 }
