@@ -3,11 +3,7 @@
     "require": ["tsconfig-paths/register"]
   },
   "compilerOptions": {
-    "target": "es6",
-    "lib": [
-      "es6",
-      "dom"
-    ],                                /* Emit ECMAScript-standard-compliant class fields. */
+    "target": "es2020",                                /* Emit ECMAScript-standard-compliant class fields. */
 
     /* Modules */
     "module": "commonjs",                                /* Specify what module code is generated. */

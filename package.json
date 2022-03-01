@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.ts",
+  "engines": {
+    "node" : "14.17.0"
+  },
   "scripts": {
-    "start": "nodemon server.ts",
+    "start": "npx ts-node server.ts",
     "build": "tsc --project ./",
     "lint": "eslint . --ext .ts",
     "test": "echo \"Error: no test specified\" && exit 1",
