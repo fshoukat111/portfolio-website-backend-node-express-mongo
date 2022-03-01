@@ -8,7 +8,8 @@
     "npm": "6.14.13"
   },
   "scripts": {
-    "start": "nodemon server.ts",
+    "start": "ts-node server.ts",
+    "dev": "nodemon -x ts-node server.ts",
     "build": "tsc --project ./",
     "tsc": "tsc",
     "lint": "eslint . --ext .ts",
