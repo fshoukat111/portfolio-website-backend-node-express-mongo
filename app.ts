@@ -1,14 +1,26 @@
 import express from "express";
-const app = express();
-const category = require("@app/routes/CategoryRoutes/category.routes");
-const portfolio = require("@app/routes/PortfolioRoutes/portfolio.routes");
-
-app.use(express.json());
+import cookieParser from "cookie-parser";
+import bodyParser from "body-parser";
+import { CategoryRoutes, PortfolioRoutes, UserRoutes } from "@app/routes";
+import errorMiddleware from "@app/middleware/errors";
+import cors from "cors";
+export const app = express();
 
 // Config
-require("dotenv").config();
-  
-app.use("/api", category);
-app.use("/api", portfolio);
+if (process.env.NODE_ENV !== "PRODUCTION") {
+  require("dotenv").config({ path: ".env" });
+}
 
-module.exports = app;
+app.use(express.json());
+app.use(cookieParser());
+app.use(
+  cors({
+    origin: "http://localhost:4200",
+  })
+);
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use("/api/v1", CategoryRoutes);
+app.use("/api/v1", PortfolioRoutes);
+app.use("/api/v1", UserRoutes);
+
+app.use(errorMiddleware);

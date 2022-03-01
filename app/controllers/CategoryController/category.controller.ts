@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
-const catchAsyncError = require("@app/middleware/catchAsyncErrors");
-const Category = require("@app/models/CategoryModel/category.model");
+import { Category } from "@app/controllers";
+import { catchAsyncError } from "@app/middleware/catchAsyncErrors";
 
 export const createCategory = catchAsyncError(async (req: Request, res: Response, next: NextFunction) => {
     const category = await Category.create(req.body);
@@ -14,4 +14,3 @@ export const getCategories = catchAsyncError(async (req: Request, res: Response,
     const categories = await Category.find();
     res.status(200).send(categories);
 });
-

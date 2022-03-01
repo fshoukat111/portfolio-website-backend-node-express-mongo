@@ -1,18 +1,18 @@
-import express from "express";
-const router = express.Router();
-import { 
-    createPortfolio, 
-    deletePortfolio, 
-    getAllPortfolio, 
-    updatePortfolio} from "@app/controllers/PortfolioController/portfolio.controller";
+import { Router } from "express";
+import {
+    createPortfolio,
+    deletePortfolio,
+    getAllPortfolio,
+    updatePortfolio
+} from "@app/controllers/PortfolioController/portfolio.controller";
+import { authorizeRoles, isAuthenticatedUser } from "@app/middleware/auth";
+export const PortfolioRoutes = Router();
+
 
 //get all Portfolio
-router.route("/portfolio").get(getAllPortfolio);
+PortfolioRoutes.route("/portfolio").get(getAllPortfolio);
 //post single Portfolio
-router.route("/portfolio/new").post(createPortfolio);
+PortfolioRoutes.route("/admin/portfolio/create").post(isAuthenticatedUser, authorizeRoles("Admin"), createPortfolio);
 //delete and update single Portfolio
-router.route("/portfolio/:id").put(updatePortfolio).delete(deletePortfolio);
-
-
-
-module.exports = router;
+PortfolioRoutes.route("/admin/portfolio/:id").put(isAuthenticatedUser, authorizeRoles("Admin"), updatePortfolio)
+    .delete(isAuthenticatedUser, authorizeRoles("Admin"), deletePortfolio);
