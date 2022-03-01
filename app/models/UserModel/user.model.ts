@@ -1,5 +1,9 @@
 import { Document, Schema, Types, model } from 'mongoose';
 import { NextFunction, Request, Response } from "express";
+import validator from "validator";
+import jwt from "jsonwebtoken";
+import bcrypt from "bcrypt";
+
 
 export interface IUser extends Document {
     email?: string;
@@ -9,9 +13,6 @@ export interface IUser extends Document {
     createdAt?: Date;
 }
 
-import validator from "validator";
-import jwt from "jsonwebtoken";
-import bcrypt from "bcrypt";
 
 
 
