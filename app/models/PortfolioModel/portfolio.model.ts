@@ -1,24 +1,25 @@
-import { Document, Schema, Types, model } from 'mongoose';
+import { Document, Schema, Types, model } from "mongoose";
 
-
-export interface IPortfolio  extends Document{
+export interface IPortfolio extends Document {
   portfolioTitle?: string;
-  categories?:[];
+  categories?: [];
   portfolioDescription?: string;
-  portfolioImages?:[];
+  portfolioImages?: [];
   portfolioUrl?: string;
 }
 
-const portfolioSchema = new Schema<IPortfolio>({
+const portfolioSchema: Schema = new Schema({
   portfolioTitle: {
     type: String,
     required: [true, "Please Enter Portfolio Title"],
   },
-  categories: [{
-    type: Schema.Types.ObjectId,
-    ref: 'Category',
-    // required: true
-  }],
+  categories: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Category",
+      // required: true
+    },
+  ],
   portfolioDescription: {
     type: String,
     required: [true, "Please Enter Portfolio Description"],
@@ -37,7 +38,7 @@ const portfolioSchema = new Schema<IPortfolio>({
   ],
   portfolioUrl: {
     type: String,
-    required: [true, 'Please Enter Portfolio Url'],
+    required: [true, "Please Enter Portfolio Url"],
   },
 });
-export const Portfolio = model<IPortfolio>("Portfolio", portfolioSchema);
+export const Portfolio = model("Portfolio", portfolioSchema);

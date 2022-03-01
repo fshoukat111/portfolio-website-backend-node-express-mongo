@@ -1,5 +1,5 @@
 import { connectDataBase } from '@app/config/database';
-import {app} from './app'
+import {app} from './app';
 
 // Connecting to database
 connectDataBase();

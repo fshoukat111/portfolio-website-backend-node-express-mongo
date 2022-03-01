@@ -3,9 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.ts",
+  "engines": {
+    "node": "14.17.0",
+    "npm": "6.14.13"
+  },
   "scripts": {
     "start": "nodemon server.ts",
     "build": "tsc --project ./",
+    "tsc": "tsc",
     "lint": "eslint . --ext .ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "heroku-postbuild": "npm run prod"
@@ -17,7 +22,7 @@
     "@types/cookie-parser": "^1.4.2",
     "@types/express": "^4.17.13",
     "@types/jsonwebtoken": "^8.5.8",
-    "@types/node": "^17.0.9",
+    "@types/node": "^17.0.21",
     "ts-node": "^10.5.0",
     "tsconfig-paths": "^3.12.0",
     "tslib": "^2.3.1",
@@ -26,12 +31,14 @@
   "dependencies": {
     "@tsconfig/node14": "^1.0.1",
     "@types/bcrypt": "^5.0.0",
+    "@types/cors": "^2.8.12",
     "@types/mongodb": "^4.0.7",
     "@types/mongoose": "^5.11.97",
     "@types/validator": "^13.7.1",
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.2",
     "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "express": "^4.17.2",
     "jsonwebtoken": "^8.5.1",
