@@ -3,12 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.ts",
+  "type": "commonjs",
   "engines": {
     "node": "14.17.0",
     "npm": "6.14.13"
   },
   "scripts": {
-    "start": "nodemon server.ts",
+    "start": "ts-node server.ts",
+    "dev": "nodemon -x ts-node server.ts",
     "build": "tsc --project ./",
     "tsc": "tsc",
     "lint": "eslint . --ext .ts",
