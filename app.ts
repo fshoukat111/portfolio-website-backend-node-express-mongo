@@ -1,24 +1,23 @@
 import express from "express";
-import cookieParser from "cookie-parser"
+import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
 import { CategoryRoutes, PortfolioRoutes, UserRoutes } from "@app/routes";
 import errorMiddleware from "@app/middleware/errors";
-
-
-// import cors from "cors";
-
+import cors from "cors";
 export const app = express();
 
 // Config
 if (process.env.NODE_ENV !== "PRODUCTION") {
-    require("dotenv").config({ path: ".env" });
+  require("dotenv").config({ path: ".env" });
 }
 
 app.use(express.json());
 app.use(cookieParser());
-// app.use(cors({
-//     origin: "http://localhost:4200"
-// }));
+app.use(
+  cors({
+    origin: "http://localhost:4200",
+  })
+);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/api/v1", CategoryRoutes);
 app.use("/api/v1", PortfolioRoutes);
