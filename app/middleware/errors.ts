@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import {ErrorHandler} from '@app/utils/errorhandler'
 
-export = (
+export default  (
   error: any,
   request: Request,
   response: Response,
