@@ -3,13 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
-  "type": "module",
   "engines": {
     "node": "14.17.0",
     "npm": "6.14.13"
   },
   "scripts": {
-    "start": "ts-node server.ts",
+    "start": "nodemon server.ts",
     "dev": "nodemon -x ts-node server.ts",
     "build": "tsc --project ./",
     "tsc": "tsc",
@@ -28,15 +27,14 @@
     "ts-node": "^10.5.0",
     "tsconfig-paths": "^3.12.0",
     "tslib": "^2.3.1",
-    "typescript": "^4.5.4"
-  },
-  "dependencies": {
-    "@tsconfig/node14": "^1.0.1",
+    "typescript": "^4.5.4",
     "@types/bcrypt": "^5.0.0",
     "@types/cors": "^2.8.12",
     "@types/mongodb": "^4.0.7",
     "@types/mongoose": "^5.11.97",
-    "@types/validator": "^13.7.1",
+    "@types/validator": "^13.7.1"
+  },
+  "dependencies": {
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.2",
     "cookie-parser": "^1.4.6",
