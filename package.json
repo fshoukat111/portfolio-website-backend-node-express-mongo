@@ -20,7 +20,7 @@
     "start": "node dist/server.js",
     "dev": "nodemon -x ts-node server.ts",
     "build": "tsc",
-    "lint": "eslint . --ext .ts",
+    "lint": "eslint . --ext .ts"
   },
   "author": "",
   "license": "ISC",
