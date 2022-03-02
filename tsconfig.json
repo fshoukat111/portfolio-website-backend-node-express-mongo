@@ -5,27 +5,16 @@
   "compilerOptions": {
     "target": "es6",
     "module": "commonjs",
-    "outDir": "./build",
-    "declaration": true,
-    "removeComments": true,
-    "emitDecoratorMetadata": true,
-    "esModuleInterop": true,
-    "resolveJsonModule": true,
-    "experimentalDecorators": true,
+    "outDir": "dist",
     "sourceMap": true,
-    "allowJs": true,
-    "incremental": true ,           
-
+    "esModuleInterop": true,
     /* Type Checking */
-    "strict": false,                                     
+    "strict": false,
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@app/*":[
-        "./app/*",
-      ],
-
-  },
-    
-  },
+      "@app/*": ["./app/*"]
+    }
+  },  
+  "exclude": ["node_modules"]
 }
