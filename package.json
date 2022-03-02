@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "nodemon dist/server.js",
-    "dev": "nodemon -x ts-node server.ts",
+    "dev": "nodemon server.ts",
     "build": "tsc --project ./",
     "tsc": "tsc",
     "postinstall": "tsc",
