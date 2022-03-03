@@ -8,7 +8,7 @@
     "npm": "6.14.13"
   },
   "scripts": {
-    "start": "nodemon --exec npx ts-node dist/server.js",
+    "start": "nodemon --exec ts-node dist/server.js",
     "dev": "nodemon -x ts-node server.ts",
     "build": "tsc --project ./",
     "tsc": "tsc",
