@@ -14,7 +14,7 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
 app.use(express.json());
 app.use(
   cors({
-    origin: "*",
+    origin: '*',
   })
 );
 app.use(cookieParser());
