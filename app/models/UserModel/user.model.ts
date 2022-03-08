@@ -1,7 +1,7 @@
 import { Document, Schema, Types, model } from 'mongoose';
 import { NextFunction, Request, Response } from "express";
 import validator from "validator";
-import jwt from "jsonwebtoken";
+// import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 
 
@@ -9,8 +9,9 @@ export interface IUser extends Document {
     email?: string;
     userName?: string;
     password?: string;
-    role?: string;
     createdAt?: Date;
+    role?: string;
+    token?: string;
 }
 
 
@@ -39,6 +40,10 @@ const userSchema = new Schema({
         type: String,
         default: "User",
     },
+    token: {
+        type: String,
+        // required: true,
+    },
     createdAt: {
         type: Date,
         default: new Date(Date.now()),
@@ -54,12 +59,16 @@ userSchema.pre("save", async function(next: NextFunction) {
 });
 
 // JWT TOKEN
-userSchema.methods.getJwtToken = function () {
-    const secret = String(process.env.JWT_SECRET);
-    return jwt.sign({ id: this._id }, secret, {
-        expiresIn: process.env.JWT_EXPIRE,
-    });
-};
+// userSchema.methods.getJwtToken = function () {
+//     const secret = String(process.env.JWT_SECRET);
+//     return jwt.sign({ id: this._id }, secret, {
+//         expiresIn: process.env.JWT_EXPIRE,
+//     });
+// };
+
+
+
+// userSchema.token = token;
 
 /**
  * compare password

@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from "express";
+import jwt from "jsonwebtoken";
 import { sendToken } from "@app/utils/jwtToken";
 import { ErrorHandler } from "@app/utils/errorhandler";
 import { User } from "@app/controllers";
@@ -14,7 +15,15 @@ export const registerUser = catchAsyncError(async (req: Request, res: Response, 
         email,
         password
     });
-    sendToken(user, 201, res);
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+        expiresIn: "4h"
+    })
+    user.token = token;
+    res.status(201).json({
+        success: true,
+        user,
+    });
+    // sendToken(user, 201, res);
 });
 
 /**
@@ -34,7 +43,16 @@ export const loginUser = catchAsyncError(async (req: Request, res: Response, nex
     if (!isPasswordMatched) {
         return next(new ErrorHandler("Password Not match", 401));
     }
-    sendToken(user, 200, res);
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+        expiresIn: "4h"
+    })
+    user.token = token;
+    console.log("user.token",user.token)
+    res.status(200).json({
+        success: true,
+        user,
+    });
+    // sendToken(user, 200, res);
 });
 
 export const getAllUsers = catchAsyncError(async (req: Request, res: Response, next: NextFunction) => {

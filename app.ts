@@ -12,12 +12,12 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
 }
 
 app.use(express.json());
-app.use(cookieParser());
 app.use(
   cors({
     origin: "*",
   })
 );
+app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/api/v1", CategoryRoutes);
 app.use("/api/v1", PortfolioRoutes);
