@@ -11,8 +11,8 @@ export const sendToken = (user: InstanceType<typeof User>, statusCode: any, res:
         ),
         httpOnly:true
     }
-
-    res.status(statusCode).cookie("token",token,option).json({
+    res.setHeader('token',token);
+    res.status(statusCode).cookie(token,option).json({
         success: true,
         user,
         token
