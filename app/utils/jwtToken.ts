@@ -9,10 +9,11 @@ export const sendToken = (user: InstanceType<typeof User>, statusCode: any, res:
     const option = {
         expiresDate:new Date(Date.now() + Number(process.env.COOKIE_EXPIRE) * 24 * 60 * 60 * 1000
         ),
-        httpOnly:true
+        httpOnly:false
     }
-    res.setHeader('token',token);
-    res.status(statusCode).cookie(token,option).json({
+    res.setHeader('token',token)
+
+    res.status(statusCode).cookie("token",token,option).json({
         success: true,
         user,
         token

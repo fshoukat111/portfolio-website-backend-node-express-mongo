@@ -1,18 +1,19 @@
 import { NextFunction, Request, Response } from "express";
 import { ErrorHandler } from "@app/utils/errorhandler";
+import jwt from "jsonwebtoken";
+
 import { catchAsyncError } from "@app/middleware/catchAsyncErrors";
 import { User } from "@app/controllers";
 
-import jwt from "jsonwebtoken";
 
 export const isAuthenticatedUser = catchAsyncError(async (req: Request, res: Response, next: NextFunction) => {
-    const { token } = req.cookies;
-    const secret = String(process.env.JWT_SECRET);
-
+    const token = req.headers.authorization.split(' ')[1] || req.body.token;
     if (!token) {
         return next(new ErrorHandler("Please Login to access this resource", 401));
     }
-    const decodedData = jwt.verify(token, secret);
+
+    const decodedData = jwt.verify(token, process.env.JWT_SECRET);
+
     req.body.user = await User.findById((decodedData as any).id);
     next();
 });
