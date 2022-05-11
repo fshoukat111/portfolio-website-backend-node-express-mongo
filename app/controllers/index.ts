@@ -1,3 +1,3 @@
-export {Category} from "@app/models/CategoryModel/category.model";
-export {Portfolio} from "@app/models/PortfolioModel/portfolio.model";
-export {User} from "@app/models/UserModel/user.model";
+export {Category} from "@app/models/category/category.model";
+export {Portfolio} from "@app/models/portfolio/portfolio.model";
+export {User} from "@app/models/user/user.model";

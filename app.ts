@@ -1,7 +1,11 @@
 import express from "express";
-import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
-import { CategoryRoutes, PortfolioRoutes, UserRoutes } from "@app/routes";
+import { 
+  adminPortfolioRoutes,
+  categoryAdminRoutes,
+  categoryRoutes,
+  portfolioRoutes,
+  userRoutes } from "@app/routes";
 import errorMiddleware from "@app/middleware/errors";
 import cors from "cors";
 export const app = express();
@@ -12,15 +16,17 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
 }
 
 app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
   cors({
     origin: '*',
   })
 );
-app.use(cookieParser());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use("/api/v1", CategoryRoutes);
-app.use("/api/v1", PortfolioRoutes);
-app.use("/api/v1", UserRoutes);
+
+app.use("/api/v1", categoryRoutes);
+app.use("/api/v1", adminPortfolioRoutes);
+app.use("/api/v1", categoryAdminRoutes);
+app.use("/api/v1", portfolioRoutes);
+app.use("/api/v1", userRoutes);
 
 app.use(errorMiddleware);

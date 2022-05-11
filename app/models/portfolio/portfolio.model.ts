@@ -15,24 +15,29 @@ const portfolioSchema: Schema = new Schema({
   },
   categories: [
     {
-      type: Schema.Types.ObjectId,
-      ref: "Category",
-      // required: true
+      type: Schema.Types.String,     
+       ref: "Category",
+      required: true
     },
+    // {
+    //   type: String,     
+    //    ref: "Category",
+    //   required: true
+    // },
   ],
   portfolioDescription: {
     type: String,
     required: [true, "Please Enter Portfolio Description"],
   },
-  portfolioImages: [
+  images: [
     {
-      publicId: {
-        type: String,
-        required: true,
-      },
-      imageUrl: {
+      public_id: {
         type: String,
         // required: true,
+      },
+      url: {
+        type: String,
+        // required: true,s
       },
     },
   ],

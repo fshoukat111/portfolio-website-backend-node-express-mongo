@@ -14,9 +14,6 @@ export interface IUser extends Document {
     token?: string;
 }
 
-
-
-
 const userSchema = new Schema({
     userName: {
         type: String,
