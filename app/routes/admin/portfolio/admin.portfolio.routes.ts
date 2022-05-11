@@ -7,9 +7,8 @@ import {
     deleteAdminPortfolio
 } from "@app/controllers/admin/portfolio/admin.portfolio";
 import { authorizeRoles, isAuthenticatedUser } from "@app/middleware/auth";
-import { upload } from "@app/middleware/multer";
-export const adminPortfolioRoutes = Router();
 
+export const adminPortfolioRoutes = Router();
 
 //get all Portfolio for admin
 adminPortfolioRoutes.route("/admin/portfolio").get(isAuthenticatedUser, authorizeRoles("Admin"),getAllAdminPortfolio);
@@ -17,7 +16,7 @@ adminPortfolioRoutes.route("/admin/portfolio").get(isAuthenticatedUser, authoriz
 adminPortfolioRoutes.route("/admin/portfolio/:id").get(isAuthenticatedUser, authorizeRoles("Admin"),getAdminPortfolioById);
 //post single Portfolio
 adminPortfolioRoutes.route("/admin/portfolio/create")
-    .post(isAuthenticatedUser, authorizeRoles("Admin"), upload.array('image'), createAdminPortfolio);
+    .post(isAuthenticatedUser, authorizeRoles("Admin"), createAdminPortfolio);
 //delete and update single Portfolio
 adminPortfolioRoutes.route("/admin/portfolio/:id")
     .put(isAuthenticatedUser, authorizeRoles("Admin"), updateAdminPortfolio)
