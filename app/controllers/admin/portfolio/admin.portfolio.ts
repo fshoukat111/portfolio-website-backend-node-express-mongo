@@ -10,16 +10,6 @@ const cloudinary = require("cloudinary")
  */
 export const createAdminPortfolio = catchAsyncError(
     async (req: Request, res: Response, next: NextFunction) => {
-        const imagesLinks = [];
-        const portfolioImages = req.body.images;
-        const result = cloudinary.uploader.upload(portfolioImages);
-        console.log("result",result)
-        imagesLinks.push({
-            public_id: result.public_id,
-            url: result.secure_url,
-        });
-        req.body.images = imagesLinks;
-
         const portfolio = await Portfolio.create(req.body);
         res.status(200).json({
             sucess: true,
